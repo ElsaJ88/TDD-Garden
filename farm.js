@@ -37,7 +37,6 @@ const getCostsForCrop = (input) => {
   });
   return total;
 };
-// console.log(getCostsForCrop({ crops }, environmentFactors));
 
 // Get Revenue For Crop
 const getRevenueForCrop = (input, environmentFactors) => {
@@ -48,8 +47,6 @@ const getRevenueForCrop = (input, environmentFactors) => {
 
   return total;
 };
-
-// console.log(getRevenueForCrop({ crops }, environmentFactors));
 
 //Get profit for crop
 const getProfitForCrop = (input, environmentFactors) => {
@@ -62,8 +59,6 @@ const getProfitForCrop = (input, environmentFactors) => {
 const getTotalProfit = (input, environmentFactors) => {
   return getProfitForCrop(input, environmentFactors);
 };
-
-// console.log(getTotalProfit({ crops }, environmentFactors));
 
 module.exports = {
   getYieldForPlant,
