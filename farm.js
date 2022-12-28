@@ -1,6 +1,8 @@
 const corn = {
   name: "corn",
   yield: 30,
+  cost: 2,
+  salesPrice: 4,
   factor: {
     sun: {
       low: -50,
@@ -14,7 +16,7 @@ const pumpkin = {
   name: "pumpkin",
   yield: 4,
   cost: 2,
-  salesPrice: 4,
+  salesPrice: 5,
   factor: {
     sun: {
       low: -25,
@@ -71,12 +73,19 @@ const getCostsForCrop = (input) => {
   return total;
 };
 
-console.log(getTotalYield({ crops }, environmentFactors));
-
 // Get Revenue For Crop
-const getRevenueForCrop = (input) => {
-  return input.crops[0].crop.salesPrice * getTotalYield(input);
+const getRevenueForCrop = (input, environmentFactors) => {
+  let total = 0;
+  input.crops.forEach((crops) => {
+    total += crops.crop.salesPrice * getYieldForCrop(crops, environmentFactors);
+  });
+
+  return total;
+
+  // return input.crops[0].crop.salesPrice * getTotalYield(input);
 };
+
+console.log(getRevenueForCrop({ crops }, environmentFactors));
 
 //Get profit for crop
 const getProfitForCrop = (input) => {

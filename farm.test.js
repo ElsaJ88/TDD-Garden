@@ -215,3 +215,46 @@ describe("getTotalYield", () => {
     expect(getTotalYield({ crops }, environmentFactors)).toBe(81);
   });
 });
+
+// Get revenue for crop with environmental factors
+describe("getRevenueForCrop", () => {
+  test("Get revenue for crop with environmental facors", () => {
+    const corn = {
+      name: "corn",
+      yield: 30,
+      cost: 2,
+      salesPrice: 4,
+      factor: {
+        sun: {
+          low: -50,
+          medium: 0,
+          high: 50,
+        },
+      },
+    };
+
+    const pumpkin = {
+      name: "pumpkin",
+      yield: 4,
+      cost: 2,
+      salesPrice: 5,
+      factor: {
+        sun: {
+          low: -25,
+          medium: 0,
+          high: 25,
+        },
+      },
+    };
+
+    const environmentFactors = {
+      sun: "low",
+    };
+    const crops = [
+      { crop: corn, numCrops: 5 },
+      { crop: pumpkin, numCrops: 2 },
+    ];
+
+    expect(getRevenueForCrop({ crops }, environmentFactors)).toBe(330);
+  });
+});
